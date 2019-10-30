@@ -1,0 +1,31 @@
+<!-- You displayed the HeroesComponent by adding it to the AppComponent shell. -->
+<div>
+    <span>{{hero.id}}</span><br>
+    <span>{{hero.name}}</span>
+</div>
+<!-- You applied the UppercasePipe to format the name -->
+<p>{{bigil | uppercase}}</p>
+<p>{{bigil.toUpperCase()}}</p>
+<p>{{bigil.length}}</p>
+
+<!-- You used two-way data binding with the ngModel directive. -->
+<input [(ngModel)]="hero.name" placeholder="name" />
+
+<h3>Displaying List</h3>
+<ul>
+    <!-- You used *ngFor to display a list. -->
+    <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+        <span>{{hero.id}}</span> {{hero.name}}
+    </li>
+</ul>
+users Details
+<!-- You used *ngIf to conditionally include or exclude a block of HTML. -->
+<div *ngIf="selectedHero">
+    <h4>{{selectedHero.name | uppercase}} Details</h4>
+    <div><span>ID: </span>{{selectedHero.id}}</div>
+    <div>
+        <label>NAME:
+            <input [(ngModel)]="selectedHero.name" placeholder="name" />
+        </label>
+    </div>
+</div>

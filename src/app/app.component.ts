@@ -3,8 +3,21 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styles: [`div{ color:red;}`]
 })
 export class AppComponent {
-  title = 'sample-angular-app';
+  // You created the initial application structure using the Angular CLI
+  title = 'Log in';
+  name = 'Tharaa';
+  a = 5;
+  constructor() { }
+  clicked() {
+    this.onCallDisplay();
+  }
+  onCallDisplay() {
+    console.log("Hi there")
+  }
+  greetUser() {
+    return "Hello " + this.name;
+  }
 }
