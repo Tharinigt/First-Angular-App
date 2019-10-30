@@ -1,10 +1,16 @@
 <!-- You learned that Angular components display data -->
-<h1>{{title}}</h1>
+<h1 [class]="data">{{title}}</h1>
 <!-- You used the double curly braces of interpolation to display the value a. -->
-<p>{{a}}</p>
-<input type="text" placeholder="Enter your Name here" />
+<!-- Conditional apply for class -->
+<p [class.text-success]="hasError">{{a}}</p>
+<p [ngClass]="messageClass">Conditional Class</p>
+<!-- Attribute & property are not same...Attribute will not change..however property will change -->
+<input type="text" placeholder="Enter your Name here" disabled="false">
+<input type="text" [disabled]="false">
+
 <input type="button" value="Submit" (click)="clicked()" />
 <h4>{{greetUser()}}</h4>
+<input type="text" value="Sandra" />
 <!-- You used the CLI to create a second HeroesComponent. -->
 <app-heros-component bigil="Vijay"></app-heros-component>
 <app-hero-detail></app-hero-detail>
