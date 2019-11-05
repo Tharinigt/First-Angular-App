@@ -18,12 +18,20 @@ export class AppComponent {
     "text-failure": this.hasError,
     "text-important": this.important
   }
+  public userName = "";
+  public greet = "";
+  displayName = false;
+  public color = "orange";
+  public list = ["Africa", "America", "Europe", "Australia", "Asia"];
+  public message = "";
   constructor() { }
-  clicked() {
-    this.onCallDisplay();
+  clicked(value) {
+    this.onCallDisplay(value);
   }
-  onCallDisplay() {
+  onCallDisplay(value) {
     console.log("Hi there")
+    this.greet = "Good morning"
+    console.log("name", value)
   }
   greetUser() {
     return "Hello " + this.name;

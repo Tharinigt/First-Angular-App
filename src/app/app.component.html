@@ -4,13 +4,51 @@
 <!-- Conditional apply for class -->
 <p [class.text-success]="hasError">{{a}}</p>
 <p [ngClass]="messageClass">Conditional Class</p>
-<!-- Attribute & property are not same...Attribute will not change..however property will change -->
-<input type="text" placeholder="Enter your Name here" disabled="false">
-<input type="text" [disabled]="false">
-
-<input type="button" value="Submit" (click)="clicked()" />
+<!-- Attribute & property are not same...Attribute(disabled) will not change..however property will change -->
+<input type="text" disabled="false">
+<!-- reference& two-way binding -->
+<input type="text" #myInput placeholder="Enter your Name here" [(ngModel)]="userName" [disabled]="false">
+{{userName}}
+<input type="button" value="Submit" (click)="clicked(myInput.value)" />
+{{greet}}
 <h4>{{greetUser()}}</h4>
 <input type="text" value="Sandra" />
 <!-- You used the CLI to create a second HeroesComponent. -->
+
+<!-- Structural directives -->
+<!-- ngIf -->
+<h1 *ngIf="displayName;then thenBlock; else elseBlock">Structural directives</h1>
+<ng-template #thenBlock>
+    <h2>
+        Condition is true
+    </h2>
+</ng-template>
+<ng-template #elseBlock>
+    <h2>
+        Condition is false
+    </h2>
+    <!-- ngSwitch -->
+    <div [ngSwitch]="color">
+        <div *ngSwitchCase="'red'">Red color is selected</div>
+        <div *ngSwitchCase="'green'">Green color is selected</div>
+        <div *ngSwitchCase="'yellow'">Yellow color is selected</div>
+        <div *ngSwitchDefault>Wrongly selected</div>
+    </div>
+    <!-- ngFor -->
+    <div *ngFor="let data of list;index as i">
+        <!-- last as l
+        first as f
+        odd as o
+        even as e -->
+        {{i}} {{data}}
+    </div>
+</ng-template>
+<app-hero-detail [parentData]="name" (childData)="message=$event"></app-hero-detail>
+<h2>{{message}}</h2>
 <app-heros-component bigil="Vijay"></app-heros-component>
-<app-hero-detail></app-hero-detail>
+<nav>
+    <a routerLink="/department" routerLinkActive="active">Departments</a>
+    <a routerLink="/employee" routerLinkActive="active">Employee</a>
+</nav>
+
+<router-outlet></router-outlet>
