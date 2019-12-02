@@ -8,6 +8,7 @@ import { HerosComponentComponent } from './heros-component/heros-component.compo
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { EmployeeService } from './employee.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './service/data.service';
 
 // You learned about the AppModule.
 @NgModule({
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [EmployeeService],
+  // Service Example
+  providers: [EmployeeService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

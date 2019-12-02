@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from "@angular/router";
+import { DataService } from './service/data.service'
 
 @Component({
   selector: 'app-root',
@@ -24,16 +26,35 @@ export class AppComponent {
   public color = "orange";
   public list = ["Africa", "America", "Europe", "Australia", "Asia"];
   public message = "";
-  constructor() { }
+  constructor(private router: Router,
+    private dataService: DataService) {
+
+  }
+
   clicked(value) {
     this.onCallDisplay(value);
   }
+
   onCallDisplay(value) {
     console.log("Hi there")
     this.greet = "Good morning"
     console.log("name", value)
   }
+
   greetUser() {
     return "Hello " + this.name;
+  }
+
+  goHome() {
+    this.router.navigate(['department']);
+  }
+
+  increment() {
+    this.dataService.count++;
+  }
+
+  print(event) {
+    console.log(event);
+    this.name = event.target.value;
   }
 }

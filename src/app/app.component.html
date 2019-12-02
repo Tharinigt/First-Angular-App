@@ -1,4 +1,12 @@
 <!-- You learned that Angular components display data -->
+<nav>
+    <a class="navbar-brand" (click)="goHome()">Some Search App</a>
+</nav>
+<!-- Service Examples -->
+<button (click)="increment()">{{dataService.count}}hi</button>
+<p>{{dataService.fileName}}</p>
+<app-hero-detail [parentData]="name" (childData)="message=$event"></app-hero-detail>
+<h2>{{message}}</h2>
 <h1 [class]="data">{{title}}</h1>
 <!-- You used the double curly braces of interpolation to display the value a. -->
 <!-- Conditional apply for class -->
@@ -7,11 +15,15 @@
 <!-- Attribute & property are not same...Attribute(disabled) will not change..however property will change -->
 <input type="text" disabled="false">
 <!-- reference& two-way binding -->
-<input type="text" #myInput placeholder="Enter your Name here" [(ngModel)]="userName" [disabled]="false">
+{{name}}
+<input type="text" value="thara" id="thara" (change)="print($event)" />
+<input type="text" #myInput placeholder="Enter your Name here" [(ngModel)]="userName" [disabled]="false" />
 {{userName}}
 <input type="button" value="Submit" (click)="clicked(myInput.value)" />
 {{greet}}
 <h4>{{greetUser()}}</h4>
+{{userData}}
+<input id="thar" [(ngModel)]="userData" />
 <input type="text" value="Sandra" />
 <!-- You used the CLI to create a second HeroesComponent. -->
 
@@ -43,8 +55,6 @@
         {{i}} {{data}}
     </div>
 </ng-template>
-<app-hero-detail [parentData]="name" (childData)="message=$event"></app-hero-detail>
-<h2>{{message}}</h2>
 <app-heros-component bigil="Vijay"></app-heros-component>
 <nav>
     <a routerLink="/department" routerLinkActive="active">Departments</a>
@@ -52,3 +62,24 @@
 </nav>
 
 <router-outlet></router-outlet>
+
+
+<!-- Notes
+  1)  className="test"
+<div [class]="className">  Now the value of class is test.
+  2)  className="test"
+  <div class="className">
+      or
+    <div [class]="'className'"> 
+         Now the value of class is className.
+3) <div class="{{className}}"> Now the value of class is test
+-->
+
+<!-- Notes
+<ng-template [ngIf]="users" [ngIfThen]="usersFound" [ngIfElse]="usersNotFound">
+</ng-template>
+or
+<div *ngIf="users;then usersFound;else usersNotFound
+">
+</div>
+-->

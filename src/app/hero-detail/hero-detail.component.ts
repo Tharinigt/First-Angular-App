@@ -1,10 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HeroApp } from '../hero';
 import { EmployeeService } from '../employee.service';
+import { DataService } from '../service/data.service'
 
 @Component({
   selector: 'app-hero-detail',
   template: `
+  <button>{{dataService.count}}ServiceInHeroFile</button> 
   <h2>{{"Hello" + parentData}}</h2>
   <button (click)="childToParent()">ChildToParent</button><br>
   <h3>Employees Details-Dependency Injection</h3>
@@ -28,7 +30,9 @@ export class HeroDetailComponent implements OnInit {
   // Dependency Injection & Service
   public employees = [];
   public errorMsg;
-  constructor(private _employeeService: EmployeeService) { }
+  private dataService;
+  constructor(private _employeeService: EmployeeService,
+    dataService: DataService) { }
   //for dependency injection
   // ngOnInit() {
   //   this.employees = this._employeeService.getEmployees();
